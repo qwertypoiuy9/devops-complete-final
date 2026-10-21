@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard | Student Management System</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<nav th:replace="~{fragments :: navigation}"></nav>
+<main class="container">
+    <header class="page-heading">
+        <div>
+            <p class="eyebrow">OVERVIEW</p>
+            <h1>Dashboard</h1>
+            <p class="muted">A quick look at your college records.</p>
+        </div>
+    </header>
+    <section class="stats-grid">
+        <article class="card stat-card">
+            <span class="stat-label">Total students</span>
+            <strong class="stat-number" th:text="${studentCount}">0</strong>
+            <a th:href="@{/students}">View student list <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="card stat-card">
+            <span class="stat-label">Departments</span>
+            <strong class="stat-number" th:text="${departmentCount}">0</strong>
+            <span class="muted">Represented in student records</span>
+        </article>
+    </section>
+    <section class="card quick-links">
+        <h2>Quick links</h2>
+        <p class="muted">Choose an action to get started.</p>
+        <div class="action-row">
+            <a class="button" th:href="@{/students}">View Students</a>
+            <a class="button button-secondary" th:href="@{/students/add}">Add Student</a>
+            <a class="button button-light" th:href="@{/about}">About this project</a>
+        </div>
+    </section>
+</main>
+</body>
+</html>

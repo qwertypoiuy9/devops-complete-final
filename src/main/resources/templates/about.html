@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About | Student Management System</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<nav th:replace="~{fragments :: navigation}"></nav>
+<main class="container narrow-container">
+    <header class="page-heading">
+        <p class="eyebrow">ABOUT THIS PROJECT</p>
+        <h1>Autonomous CI/CD Remediation Agent</h1>
+        <p class="muted">A practical demonstration project for modern software delivery.</p>
+    </header>
+    <section class="card about-card">
+        <h2>Student Management System</h2>
+        <p>This application helps college staff manage student records, including contact details,
+            departments, academic year, and section.</p>
+        <p>It is used to demonstrate a CI/CD pipeline, from automated testing and builds to containerized deployment.</p>
+        <a class="button button-light" th:href="@{/dashboard}">Back to dashboard</a>
+    </section>
+</main>
+</body>
+</html>

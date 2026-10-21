@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Students | Student Management System</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<nav th:replace="~{fragments :: navigation}"></nav>
+<main class="container">
+    <header class="page-heading heading-with-action">
+        <div>
+            <p class="eyebrow">COLLEGE RECORDS</p>
+            <h1>Students</h1>
+            <p class="muted">Browse and manage student information.</p>
+        </div>
+        <a class="button" th:href="@{/students/add}">+ Add student</a>
+    </header>
+    <section class="card table-card">
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th><th>Name</th><th>Roll Number</th><th>Email</th>
+                    <th>Department</th><th>Year</th><th>Section</th><th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="student : ${students}">
+                    <td th:text="${student.id}"></td>
+                    <td class="strong" th:text="${student.name}"></td>
+                    <td th:text="${student.rollNumber}"></td>
+                    <td th:text="${student.email}"></td>
+                    <td th:text="${student.department}"></td>
+                    <td th:text="${student.year}"></td>
+                    <td th:text="${student.section}"></td>
+                    <td>
+                        <div class="table-actions">
+                            <a th:href="@{/students/{id}(id=${student.id})}">View</a>
+                            <a th:href="@{/students/edit/{id}(id=${student.id})}">Edit</a>
+                            <form th:action="@{/students/delete/{id}(id=${student.id})}" method="post"
+                                  onsubmit="return confirm('Delete this student?');">
+                                <button class="link-button danger-text" type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(students)}">
+                    <td class="empty-state" colspan="8">No student records yet. Add your first student to begin.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+</body>
+</html>

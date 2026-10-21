@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student profile | Student Management System</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<nav th:replace="~{fragments :: navigation}"></nav>
+<main class="container narrow-container">
+    <header class="page-heading heading-with-action">
+        <div>
+            <p class="eyebrow">STUDENT PROFILE</p>
+            <h1 th:text="${student.name}">Student name</h1>
+            <p class="muted" th:text="${student.rollNumber}">Roll number</p>
+        </div>
+        <a class="button button-light" th:href="@{/students}">← Back to Students</a>
+    </header>
+    <section class="card details-card">
+        <dl class="details-grid">
+            <div><dt>Email</dt><dd th:text="${student.email}"></dd></div>
+            <div><dt>Phone</dt><dd th:text="${student.phone != null && !student.phone.isBlank() ? student.phone : 'Not provided'}"></dd></div>
+            <div><dt>Department</dt><dd th:text="${student.department}"></dd></div>
+            <div><dt>Year</dt><dd th:text="${student.year}"></dd></div>
+            <div><dt>Section</dt><dd th:text="${student.section}"></dd></div>
+            <div class="full-span"><dt>Address</dt><dd th:text="${student.address != null && !student.address.isBlank() ? student.address : 'Not provided'}"></dd></div>
+        </dl>
+        <div class="form-actions">
+            <a class="button button-secondary" th:href="@{/students/edit/{id}(id=${student.id})}">Edit student</a>
+        </div>
+    </section>
+</main>
+</body>
+</html>

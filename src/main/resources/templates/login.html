@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in | Student Management System</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="login-page">
+<main class="login-card">
+    <div class="login-mark">SMS</div>
+    <h1>Welcome back</h1>
+    <p class="muted">Sign in to manage college student records.</p>
+    <div class="alert error" th:if="${param.error}">Invalid username or password.</div>
+    <div class="alert success" th:if="${param.logout}">You have been signed out.</div>
+    <form th:action="@{/login}" method="post">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button class="button full-width" type="submit">Sign in</button>
+    </form>
+    <p class="login-hint">Demo credentials: <strong>admin</strong> / <strong>admin123</strong></p>
+</main>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${student.id == null ? 'Add student' : 'Edit student'} + ' | Student Management System'">
+        Student form</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<nav th:replace="~{fragments :: navigation}"></nav>
+<main class="container narrow-container">
+    <header class="page-heading">
+        <p class="eyebrow">STUDENT RECORD</p>
+        <h1 th:text="${student.id == null ? 'Add student' : 'Edit student'}">Add student</h1>
+        <p class="muted">Fields marked with * are required.</p>
+    </header>
+    <section class="card form-card">
+        <form th:object="${student}"
+              th:action="${student.id == null ? '/students/add' : '/students/edit/' + student.id}"
+              method="post">
+            <div class="form-grid">
+                <div class="form-field">
+                    <label for="name">Name *</label>
+                    <input id="name" type="text" th:field="*{name}" required>
+                    <small class="field-error" th:errors="*{name}"></small>
+                </div>
+                <div class="form-field">
+                    <label for="rollNumber">Roll number *</label>
+                    <input id="rollNumber" type="text" th:field="*{rollNumber}" required>
+                    <small class="field-error" th:errors="*{rollNumber}"></small>
+                </div>
+                <div class="form-field">
+                    <label for="email">Email *</label>
+                    <input id="email" type="email" th:field="*{email}" required>
+                    <small class="field-error" th:errors="*{email}"></small>
+                </div>
+                <div class="form-field">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="tel" th:field="*{phone}">
+                </div>
+                <div class="form-field">
+                    <label for="department">Department *</label>
+                    <input id="department" type="text" th:field="*{department}" required>
+                    <small class="field-error" th:errors="*{department}"></small>
+                </div>
+                <div class="form-field">
+                    <label for="year">Year *</label>
+                    <input id="year" type="number" min="1" th:field="*{year}" required>
+                    <small class="field-error" th:errors="*{year}"></small>
+                </div>
+                <div class="form-field">
+                    <label for="section">Section *</label>
+                    <input id="section" type="text" th:field="*{section}" required>
+                    <small class="field-error" th:errors="*{section}"></small>
+                </div>
+                <div class="form-field full-span">
+                    <label for="address">Address</label>
+                    <textarea id="address" rows="3" th:field="*{address}"></textarea>
+                </div>
+            </div>
+            <div class="form-actions">
+                <a class="button button-light" th:href="@{/students}">Cancel</a>
+                <button class="button" type="submit">Save student</button>
+            </div>
+        </form>
+    </section>
+</main>
+</body>
+</html>
