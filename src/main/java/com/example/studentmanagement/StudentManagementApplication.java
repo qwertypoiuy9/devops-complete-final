@@ -7,6 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class StudentManagementApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(StudentManagementApplication.class, args missingApplication.class);
-}
+        SpringApplication.run(StudentManagementApplication.class, args);
+    }
 }
