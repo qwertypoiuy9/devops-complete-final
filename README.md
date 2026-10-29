@@ -18,7 +18,6 @@ Java 17, Spring Boot 3, Maven, Spring Web, Thymeleaf, Spring Data JPA, H2, Sprin
 ## Run locally with Maven
 
 Install Java 17 and Maven, then run these commands from the project directory:
-
 ```bash
 mvn clean install
 mvn spring-boot:run
